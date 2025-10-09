@@ -109,13 +109,12 @@ h3.post-title {padding:0 0 30px 0; margin:0; text-align:center;}
 #tagMenu .active, .tagMenuPost a.active {background:var(--success)!important;} 
 
 #feedCards{grid-template-columns:repeat(2, 1fr); display:grid; gap:1.4rem;}
-#feedCards .post-item {height: 450px; position: relative; overflow: hidden;  padding-bottom: 1em; background: url('https://cdn.jsdelivr.net/gh/CamaluRadio/icon/favicon-512x512.png') center/cover no-repeat; /* placeholder como fondo fijo */}
-
 @media (max-width:767px) {
 #feedCards {grid-template-columns:1fr; }
-#feedCards .post-item {height: 500px;}
 }
 
+#feedCards .post-item {position: relative; overflow: hidden; height: 450px; padding-bottom: 1em; background: url(&#39;https://cdn.jsdelivr.net/gh/CamaluRadio/icon/favicon-512x512.png&#39;) center/cover no-repeat; /* placeholder como fondo fijo */
+}
 #feedCards .post-item img {position:absolute; top:0; left:0; width:100%; height:100%; object-fit:cover;}
 #feedCards .post-item .post-overlay {position:absolute; bottom:0; left:0; width:100%; padding:0.3rem 1rem; background:rgba(0,0,0,0.7); color:#fff;}
 #feedCards .post-item .post-overlay h3 {font-size:clamp(1rem, 1.5vw, 2rem);}
