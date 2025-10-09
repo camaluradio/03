@@ -108,7 +108,7 @@ h3.post-title {padding:0 0 30px 0; margin:0; text-align:center;}
 #tagMenu, .tagMenuPost {display:flex; flex-wrap:wrap;} 
 #tagMenu .active, .tagMenuPost a.active {background:var(--success)!important;} 
 
-#feedCards{grid-template-columns:repeat(3, 1fr); display:grid; gap:1.4rem;}
+#feedCards{grid-template-columns:repeat(2, 1fr); display:grid; gap:1.4rem;}
 @media (max-width:767px) {
 #feedCards {grid-template-columns:1fr; }
 }
@@ -163,5 +163,6 @@ h3.post-title {padding:0 0 30px 0; margin:0; text-align:center;}
 .tts-help-inline.show {display: block; opacity: 1; transform: translateX(-50%) translateY(0);}
 .tts-help-inline .close-btn {position: absolute; top: 4px; right: 6px; background: transparent; border: none; font-size: 1rem; cursor: pointer;}
 .tts-highlight {background-color:var(--light);}
+
 
 
