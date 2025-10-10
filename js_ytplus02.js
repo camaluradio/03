@@ -597,3 +597,92 @@ document.addEventListener('DOMContentLoaded', function() {
     subtree: true
   });
 });
+
+// =================== SISTEMA AUTOMÁTICO PARA VIDEOS EN POSTS ===================
+
+// Función para inicializar videos simples en posts
+function initializePostVideos() {
+  const videoContainers = document.querySelectorAll('.cml-video');
+  
+  videoContainers.forEach((container, index) => {
+    const videoId = container.getAttribute('data-video-id');
+    if (!videoId) return;
+    
+    // Si ya está inicializado, saltar
+    if (container.querySelector('iframe')) return;
+    
+    // Crear iframe de YouTube
+    const iframe = document.createElement('iframe');
+    iframe.width = '100%';
+    iframe.height = '315';
+    iframe.src = `https://www.youtube.com/embed/${videoId}?enablejsapi=1`;
+    iframe.frameBorder = '0';
+    iframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture';
+    iframe.allowFullscreen = true;
+    iframe.className = 'cml-video-iframe';
+    
+    // Agregar al contenedor
+    container.appendChild(iframe);
+    
+    // Crear player para controlar el volumen
+    const player = new YT.Player(iframe, {
+      events: {
+        'onStateChange': function(event) {
+          if (event.data === YT.PlayerState.PLAYING) {
+            // Bajar volumen de radio cuando el video se reproduce
+            if (window.CML_radio && window.fade) {
+              window.fade(window.CML_radio, 0, 300);
+            }
+          } else if (event.data === YT.PlayerState.PAUSED || event.data === YT.PlayerState.ENDED) {
+            // Restaurar volumen de radio cuando el video se pausa
+            if (window.CML_radio && window.fade) {
+              window.fade(window.CML_radio, 1, 2000);
+            }
+          }
+        }
+      }
+    });
+  });
+}
+
+// Inicializar cuando la API esté lista
+const originalOnYouTubeIframeAPIReady = window.onYouTubeIframeAPIReady;
+window.onYouTubeIframeAPIReady = function() {
+  // Ejecutar código original si existe
+  if (originalOnYouTubeIframeAPIReady) {
+    originalOnYouTubeIframeAPIReady();
+  }
+  
+  // Inicializar videos en posts
+  initializePostVideos();
+};
+
+// También inicializar cuando se cargue el DOM (para posts normales)
+document.addEventListener('DOMContentLoaded', function() {
+  if (window.YT && window.YT.Player) {
+    setTimeout(initializePostVideos, 100);
+  }
+});
+
+// Observar cambios en el DOM para posts AJAX
+const observer = new MutationObserver(function(mutations) {
+  mutations.forEach(function(mutation) {
+    mutation.addedNodes.forEach(function(node) {
+      if (node.nodeType === 1) {
+        // Verificar si se agregó un video de post
+        if (node.querySelector && node.querySelector('.cml-video')) {
+          setTimeout(initializePostVideos, 100);
+        }
+        // Verificar si el nodo mismo es un video de post
+        if (node.classList && node.classList.contains('cml-video')) {
+          setTimeout(initializePostVideos, 100);
+        }
+      }
+    });
+  });
+});
+
+observer.observe(document.body, {
+  childList: true,
+  subtree: true
+});
