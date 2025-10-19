@@ -7,7 +7,7 @@
   const title = encodeURIComponent(document.title);
   document.getElementById('shareFacebook').href = `https://www.facebook.com/sharer/sharer.php?u=${url}`;
   document.getElementById('shareTwitter').href = `https://twitter.com/intent/tweet?url=${url}&amp;text=${title}`;
-  document.getElementById('shareWhatsApp').href = `https://api.whatsapp.com/send?text=${title}%20${url}`;
+  document.getElementById('shareWhatsApp').href = `https://api.whatsapp.com/send?text={url}`;
   document.getElementById('shareLinkedIn').href = `https://www.linkedin.com/sharing/share-offsite/?url=${url}`;
   document.getElementById('shareTelegram').href = `https://t.me/share/url?url=${url}&amp;text=${title}`;
   document.getElementById('shareDiscord').href = `https://discord.com/channels/@me?text=${title}%20${url}`;
@@ -18,4 +18,5 @@
       alert('No se pudo copiar el enlace.');
     });
   });
+
 })();
