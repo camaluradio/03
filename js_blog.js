@@ -181,7 +181,7 @@ document.addEventListener("DOMContentLoaded", function(){
       <div class="d-flex flex-wrap justify-content-center align-items-center gap-2">Compartir 
         <a class='share-btn btn-facebook' href='https://www.facebook.com/sharer/sharer.php?u=${url}' target='_blank'><i class='text-white bi bi-facebook'></i></a>
         <a class='share-btn btn-twitter' href='https://twitter.com/intent/tweet?url=${url}&amp;text=${title}' target='_blank'><i class='text-white bi bi-twitter'></i></a>
-        <a class='share-btn btn-whatsapp' href='https://api.whatsapp.com/send?text=${title}%20${url}' target='_blank'><i class='text-white bi bi-whatsapp'></i></a>
+        <a class='share-btn btn-whatsapp' href='https://api.whatsapp.com/send?text={url}' target='_blank'><i class='text-white bi bi-whatsapp'></i></a>
         <a class='share-btn btn-linkedin' href='https://www.linkedin.com/sharing/share-offsite/?url=${url}' target='_blank'><i class='text-white bi bi-linkedin'></i></a>
         <a class='share-btn btn-telegram' href='https://t.me/share/url?url=${url}&text=${title}' target='_blank'><i class='text-white bi bi-telegram'></i></a>
         <a class='share-btn btn-copy' style='cursor:pointer;'><i class='text-white bi bi-link-45deg'></i></a>
@@ -309,5 +309,6 @@ document.addEventListener("DOMContentLoaded", function(){
   });
 
   loadPosts();
+
 
 });
