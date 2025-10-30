@@ -27,7 +27,7 @@ border-radius:50%; animation:spin 1s linear infinite; position:absolute; z-index
 .CML_hero h1 {font-size:clamp(6rem, 18vw, 20rem); text-shadow:5px 5px 10px black;}
 
 @media (max-width:480px) {
-  .CML_hero h1 {font-size:clamp(6rem, 35vw, 10.5rem);}
+  .CML_hero h1 {font-size:clamp(7rem, 35vw, 11rem);}
   .CML_hero h1 span {display:block;}
 }
 
@@ -163,6 +163,7 @@ h3.post-title {padding:0 0 30px 0; margin:0; text-align:center;}
 .tts-help-inline.show {display: block; opacity: 1; transform: translateX(-50%) translateY(0);}
 .tts-help-inline .close-btn {position: absolute; top: 4px; right: 6px; background: transparent; border: none; font-size: 1rem; cursor: pointer;}
 .tts-highlight {background-color:var(--light);}
+
 
 
 
